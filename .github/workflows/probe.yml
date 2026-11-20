@@ -1,0 +1,16 @@
+# NIK-735, 20 Nov 2026: billing-lock probe. ~/.local/bin/gh-actions-probe dispatches this;
+# a run that finishes "success" proves Actions is unlocked on the account. Public repo = 0 billed minutes.
+name: probe
+run-name: probe ${{ inputs.nonce }}
+on:
+  workflow_dispatch:
+    inputs:
+      nonce:
+        required: true
+        type: string
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - run: echo "actions ok"
